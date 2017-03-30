@@ -1,0 +1,53 @@
+﻿body {    
+    border:double;
+    border-width:thick;
+}
+.Container {    
+    width:80%;
+    height:500px;    
+    margin-top:10px;
+    margin:10px auto auto auto;
+}
+.Header{
+    display:flex; 
+    align-items:center;
+    justify-content:center;
+    border-bottom:solid;
+    font-size:40px;
+    height:20%;
+    background-color:powderblue;   
+}
+.Row{
+    background-color:cornflowerblue;
+}
+.Sidebar{    
+    flex-direction:column;
+    display:flex;      
+    padding-left:2%;
+    justify-content:center;         
+    background-color:lightblue;
+    width:38%;
+    float:left;
+    height:300px;
+    line-height: 30px;
+}
+.Mainbody{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;      
+    background-color:lightblue;
+    width:60%;
+    height:300px;
+    float:right;
+    word-break:break-word;   
+}
+.Footer{
+    border:solid;
+    height:20%;
+    clear:both;
+}
+
+
+
+ 

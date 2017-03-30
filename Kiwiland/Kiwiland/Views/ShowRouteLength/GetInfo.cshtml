@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetInfo</title>
+</head>
+<body>
+    <div style="line-height: 30px;"> 
+        @using (Html.BeginForm("RouteDistance", "ShowRouteLength", FormMethod.Post))
+        {
+            <div style="line-height: 30px;">
+                <input type="text" placeholder="Route...(ABD or bd)" name="Start" size="20" autocomplete="off">
+            </div>
+            <div>
+                <input type="submit" value="Submit" />
+            </div>
+        }
+    </div>
+</body>
+</html>

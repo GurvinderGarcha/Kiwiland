@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShortRouteInfo</title>
+</head>
+<body>
+    <div style="line-height: 30px;"> 
+        @using (Html.BeginForm("ShortRoute", "ShortestRoute", FormMethod.Post))
+        {
+            <div>
+                <input type="text" placeholder="Point Of Origin" name="Start" size="20" autocomplete="off">
+            </div>
+            <div>
+                <input type="text" placeholder="Destination" name="Desti" size="20" autocomplete="off">
+            </div>
+            <div>
+                <input type="submit" value="Submit" />
+            </div>
+        }
+    </div>
+</body>
+</html>

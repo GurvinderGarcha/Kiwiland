@@ -1,0 +1,31 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width", initial-scale="1.0" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/StyleSheet1.css")" rel="stylesheet" type="text/css"/>
+      
+</head>
+<body style="background-color:powderblue">
+    <div class="Container">
+        <div class="Header">KiwiLand Railways</div>
+        <div class="Row">
+            <div class="Sidebar">
+                <div class:Column>
+                    @Html.ActionLink("Route Length", "GetInfo", "ShowRouteLength")<br />
+                    @Html.ActionLink("# Of Trips", "GetTripInfo", "NumberOfTrips")<br />
+                    @Html.ActionLink("Shortest Route", "ShortRouteInfo", "ShortestRoute")<br />
+                    @Html.ActionLink("Routes by distance", "GetInfo", "DistanceAsRoof")<br />
+                    
+                </div>
+            </div>
+            <div class="Mainbody">
+                @RenderBody()
+            </div>
+        </div>
+    </div>      
+</body>
+</html>

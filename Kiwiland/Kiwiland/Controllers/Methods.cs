@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Kiwiland.Models;
+
+namespace Kiwiland.Controllers
+{
+    public class Methods:FileData
+    {
+
+        public List<Edge> Connections(char start)
+        {
+            return (from e in nList
+                    where e.Start == start
+                    select e).ToList<Edge>();
+        }
+
+        public List<char> CheckInput(string s)
+        {
+            string input = s.ToUpper();                 // convert input to upperCase
+            List<char> inputChar = new List<char>();
+
+            foreach (char text in input)                // get rid of spaces and digits;
+                if (char.IsLetter(text))
+                    inputChar.Add(text);
+
+            return inputChar;
+        }
+        
+    }
+}

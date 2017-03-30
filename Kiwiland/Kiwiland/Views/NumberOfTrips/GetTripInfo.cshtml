@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetTripInfo</title>
+</head>
+<body>
+    <div style="line-height: 30px;">
+        @using (Html.BeginForm("Trips", "NumberOfTrips", FormMethod.Post))
+        {
+            <div>
+                <input type="text" placeholder="Route...(AB or bd)" name="Start" size="20" autocomplete="off">                
+            </div>
+            <div>
+                <input type="text" name="NumStops" size="20" autocomplete="off"/> Number Of Trips
+            </div>
+            <div>
+                <input type="checkbox" id="ExactStop" name="Query1" value="true" ) /> Is Stop # Exact
+            </div>
+            <div>
+                <input type="submit" value="Submit" />
+            </div>            
+        }
+    </div>
+</body>
+</html>
