@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Kiwiland.Models;
+
+using Kiwiland.Core;
 
 namespace Kiwiland.Controllers
 {
     public class DistanceAsRoofController : Controller
     {
-        FileData fileData = new FileData();
-
         // GET: DistanceAsRoof
         public ActionResult GetInfo()
         {
@@ -18,40 +17,24 @@ namespace Kiwiland.Controllers
         }
         public ActionResult ByDistance(FormCollection form)
         {
+            
             int routeCount = 0;
+            int distance = 0;
             List<char> route = new List<char>();
-            route = new Methods().CheckInput(form["Start"]);
-            var trip = getRoute(route[0], Int32.Parse(form["RoofDistance"])).Distinct<string>();
-            foreach (var v in trip)
+            var start = form["Start"];
+            var roofDistance = form["RoofDistance"];
+            if (int.TryParse(roofDistance, out distance))
             {
-                if (v[v.Length - 1] == route[1] && v.Length > 1)
-                {
-                    routeCount += 1;
-                }
+                var router = InstanceFactory.GetRouter();
+                var result = router.FindNumberOfRoutesByDistance(start, distance);
+                ViewBag.Answer = (result.Count > 0) ? "There Are " + result.Count.ToString() + " Different Routes with a Distance Less than " + form["RoofDistance"] : "No Such Routes Exist.";
             }
-            ViewBag.Answer = (routeCount > 0)?"There Are "+routeCount.ToString()+" Different Routes with a Distance Less than "+form["RoofDistance"]:"No Such Routes Exist.";
+            else
+            {
+                ViewBag.Answer = string.Format("Invalid RoofDistance {0}", roofDistance);
+            }
+                        
             return View("RouteDistance");
-        }
-        //check number of route by distance
-        public List<string> getRoute(char start, int maxDistance)
-        {
-            List<string> route = new List<string>();
-
-            if (maxDistance <= 0)
-            {
-                return route;
-            }
-            IList<Edge> list = new Methods().Connections(start);
-            foreach (Edge e in list)
-            {
-                List<string> edgeList = getRoute(e.Last, maxDistance - e.Distance);
-                foreach (string s in edgeList)
-                {
-                    route.Add(start.ToString() + " - " + s);
-                }
-                route.Add(e.Start.ToString());
-            }
-            return route;
-        }
+        }       
     }
 }

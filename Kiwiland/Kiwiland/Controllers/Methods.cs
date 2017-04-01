@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Kiwiland.Models;
+using Kiwiland.Core;
 
 namespace Kiwiland.Controllers
 {
-    public class Methods:FileData
+    public class Methods
     {
+        private IInputData _inputData;
+        public Methods(IInputData data)
+        {
+            _inputData = data;
+        }
 
         public List<Edge> Connections(char start)
         {
-            return (from e in nList
+            return (from e in _inputData.NList
                     where e.Start == start
                     select e).ToList<Edge>();
         }
